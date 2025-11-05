@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debate Farmacéutico · Votación del Aula</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="roster-data.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1>Debate Farmacéutico</h1>
+        <p>
+          Vota los argumentos más convincentes de tus compañeros y compañeras.
+          El plazo de votación estará abierto hasta el 7 de noviembre de 2025 a
+          las 23:59. Los votos registrados después de esa fecha y hora no serán
+          válidos.
+        </p>
+      </div>
+    </header>
+
+    <main class="container">
+      <nav class="tabs" role="tablist" aria-label="Secciones principales">
+        <button class="tabs__button is-active" data-tab="roster" role="tab">
+          Participantes y posturas
+        </button>
+        <button class="tabs__button" data-tab="vote" role="tab">
+          Emitir voto
+        </button>
+        <button class="tabs__button" data-tab="instrucciones" role="tab">
+          Instrucciones de la actividad
+        </button>
+      </nav>
+
+      <section
+        id="tab-roster"
+        class="tab-panel is-visible"
+        role="tabpanel"
+        aria-labelledby="Participantes y posturas"
+      >
+        <h2>Listado del debate</h2>
+        <p class="lead">
+          Consulta el tema y la postura que defendió cada alumno/a para votar con
+          toda la información. Las personas que no aparecen en el listado no
+          llegaron a exponer su argumento en clase.
+        </p>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Alumno/a</th>
+                <th>Tema debatido</th>
+                <th>Postura</th>
+                <th>Notas</th>
+              </tr>
+            </thead>
+            <tbody id="roster-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section
+        id="tab-vote"
+        class="tab-panel"
+        role="tabpanel"
+        aria-labelledby="Emitir voto"
+      >
+        <h2>Vota tus argumentos favoritos</h2>
+        <p class="lead">
+          Selecciona tus tres argumentos preferidos a favor y tus tres argumentos
+          preferidos en contra. No se permiten empates ni repetir nombres en una
+          misma categoría. Recuerda enviar tu voto antes del 7 de noviembre de
+          2025 a las 23:59.
+        </p>
+        <form id="vote-form" class="card">
+          <div class="form-group">
+            <label for="voter-name">Tu nombre y apellidos</label>
+            <input
+              type="text"
+              id="voter-name"
+              name="voter-name"
+              placeholder="Ej. Laura García Gómez"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <fieldset class="fieldset">
+            <legend>Argumentos a favor</legend>
+            <div class="select-grid" data-category="favor">
+              <label>
+                1.º puesto
+                <select name="favor-first" required></select>
+              </label>
+              <label>
+                2.º puesto
+                <select name="favor-second" required></select>
+              </label>
+              <label>
+                3.º puesto
+                <select name="favor-third" required></select>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="fieldset">
+            <legend>Argumentos en contra</legend>
+            <div class="select-grid" data-category="contra">
+              <label>
+                1.º puesto
+                <select name="contra-first" required></select>
+              </label>
+              <label>
+                2.º puesto
+                <select name="contra-second" required></select>
+              </label>
+              <label>
+                3.º puesto
+                <select name="contra-third" required></select>
+              </label>
+            </div>
+          </fieldset>
+
+          <button class="btn btn--primary" type="submit">
+            Enviar votación
+          </button>
+          <p id="form-feedback" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section
+        id="tab-instrucciones"
+        class="tab-panel"
+        role="tabpanel"
+        aria-labelledby="Instrucciones de la actividad"
+      >
+        <h2>Instrucciones clave del debate</h2>
+        <article class="card">
+          <h3>Objetivo</h3>
+          <p>
+            Analizar críticamente cuestiones éticas, sociales y económicas
+            relacionadas con la farmacia defendiendo argumentos contrapuestos sobre
+            un mismo tema.
+          </p>
+          <h3>Desarrollo del debate</h3>
+          <ol>
+            <li>
+              Preparación individual (5 min): redacta un argumento a favor y otro en
+              contra sobre tu tema elegido.
+            </li>
+            <li>
+              Exposición oral (1 min): defiende el argumento asignado sin leer notas.
+            </li>
+            <li>
+              Votación final: todo el grupo selecciona los mejores argumentos a favor
+              y en contra.
+            </li>
+          </ol>
+          <h3>Sistema de puntuación sugerido</h3>
+          <ul>
+            <li>1.º puesto: 2 puntos adicionales</li>
+            <li>2.º puesto: 1,5 puntos adicionales</li>
+            <li>3.º puesto: 1 punto adicional</li>
+          </ul>
+          <p>
+            Estos puntos se suman a la rúbrica general del debate (creatividad,
+            fuerza del argumento y expresión oral) con un máximo total de 10 puntos.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Elaborado para el módulo “Sostenibilidad aplicada al sistema productivo”.
+      </p>
+    </footer>
+  </body>
+</html>
